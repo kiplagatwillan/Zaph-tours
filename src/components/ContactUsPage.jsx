@@ -24,21 +24,13 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 const ContactUsPage = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
-  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSnackbarMessage(
-      "Message sent successfully! We will get back to you soon.",
-    );
-    setSnackbarSeverity("success");
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setOpenSnackbar(true);
-    event.target.reset();
+    e.target.reset();
   };
-  const handleCloseSnackbar = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+  const handleCloseSnackbar = (_, reason) => {
+    if (reason === "clickaway") return;
     setOpenSnackbar(false);
   };
   return (
@@ -57,24 +49,17 @@ const ContactUsPage = () => {
         </Typography>
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
-            {" "}
-            <Card
-              sx={{
-                p: { xs: 4, md: 6 },
-                borderRadius: 3,
-                boxShadow: 3,
-                height: "100%",
-              }}
-            >
+            <Card sx={{ p: 4, borderRadius: 3, boxShadow: 3 }}>
               <Typography
                 variant="h4"
                 sx={{
                   mb: 4,
-                  fontSize: { xs: "1.5rem", md: "1.75rem" },
+                  fontSize: "1.75rem",
                   fontWeight: 600,
                   color: "primary.main",
                 }}
               >
+                {" "}
                 Send Us a Message
               </Typography>
               <form
@@ -90,8 +75,8 @@ const ContactUsPage = () => {
                 <TextField
                   label="Your Email"
                   variant="outlined"
-                  fullWidth
                   type="email"
+                  fullWidth
                   required
                 />
                 <TextField
@@ -103,17 +88,17 @@ const ContactUsPage = () => {
                 <TextField
                   label="Your Message"
                   variant="outlined"
-                  fullWidth
                   multiline
-                  rows={6}
+                  rows={5}
+                  fullWidth
                   required
-                />{" "}
+                />
                 <Button
                   type="submit"
                   variant="contained"
                   color="primary"
                   size="large"
-                  sx={{ py: 1.5, borderRadius: 2 }}
+                  sx={{ py: 1.5 }}
                 >
                   Send Message
                 </Button>
@@ -123,7 +108,7 @@ const ContactUsPage = () => {
           <Grid item xs={12} md={6}>
             <Card
               sx={{
-                p: { xs: 4, md: 6 },
+                p: 4,
                 borderRadius: 3,
                 boxShadow: 3,
                 height: "100%",
@@ -137,7 +122,7 @@ const ContactUsPage = () => {
                   variant="h4"
                   sx={{
                     mb: 4,
-                    fontSize: { xs: "1.5rem", md: "1.75rem" },
+                    fontSize: "1.75rem",
                     fontWeight: 600,
                     color: "primary.main",
                   }}
@@ -145,166 +130,104 @@ const ContactUsPage = () => {
                   Contact Information
                 </Typography>
                 <List disablePadding>
-                  <ListItem sx={{ mb: 1.5, p: 0 }}>
+                  <ListItem sx={{ p: 0, mb: 1.5 }}>
                     <InputAdornment position="start" sx={{ mr: 1.5 }}>
                       <EmailIcon color="primary" />
                     </InputAdornment>
-                    <ListItemText
-                      primary="info@zaphtours.com"
-                      primaryTypographyProps={{
-                        variant: "body1",
-                        sx: { color: "text.secondary" },
-                      }}
-                    />
+                    <ListItemText primary="info@zaphtours.com" />
                   </ListItem>
-                  <ListItem sx={{ mb: 1.5, p: 0 }}>
+                  <ListItem sx={{ p: 0, mb: 1.5 }}>
                     <InputAdornment position="start" sx={{ mr: 1.5 }}>
+                      {" "}
                       <PhoneIcon color="primary" />
                     </InputAdornment>
-                    <ListItemText
-                      primary="+254 712 345 678"
-                      primaryTypographyProps={{
-                        variant: "body1",
-                        sx: { color: "text.secondary" },
-                      }}
-                    />
+                    <ListItemText primary="+254 712 345 678" />
                   </ListItem>
-                  <ListItem sx={{ mb: 1.5, p: 0 }}>
+                  <ListItem sx={{ p: 0, mb: 1.5 }}>
                     <InputAdornment position="start" sx={{ mr: 1.5 }}>
                       <LocationOnIcon color="primary" />
                     </InputAdornment>
-                    <ListItemText
-                      primary="123 Safari Avenue, Nairobi, Kenya"
-                      primaryTypographyProps={{
-                        variant: "body1",
-                        sx: { color: "text.secondary" },
-                      }}
-                    />
+                    <ListItemText primary="123 Safari Avenue, Nairobi, Kenya" />
                   </ListItem>
                 </List>
-
                 <Typography
-                  variant="h4"
-                  sx={{
-                    mt: 4,
-                    mb: 2,
-                    fontSize: { xs: "1.5rem", md: "1.75rem" },
-                    fontWeight: 600,
-                    color: "primary.main",
-                  }}
+                  variant="body1"
+                  sx={{ mt: 3, mb: 1, fontWeight: 600 }}
                 >
                   Office Hours
                 </Typography>
-                <Typography variant="body1" sx={{ color: "text.secondary" }}>
-                  Monday - Friday: 9:00 AM - 5:00 PM (EAT)
+                <Typography variant="body2">
+                  Mon-Fri: 9:00 AM - 5:00 PM (EAT)
                 </Typography>
-                <Typography variant="body1" sx={{ color: "text.secondary" }}>
-                  Saturday: 10:00 AM - 2:00 PM (EAT)
+                <Typography variant="body2">
+                  Sat: 10:00 AM - 2:00 PM (EAT)
                 </Typography>
-                <Typography variant="body1" sx={{ color: "text.secondary" }}>
-                  Sunday: Closed
-                </Typography>
+                <Typography variant="body2">Sun: Closed</Typography>
               </Box>
               <Box sx={{ mt: 4 }}>
                 <Typography
                   variant="h4"
                   sx={{
                     mb: 2,
-                    fontSize: { xs: "1.5rem", md: "1.75rem" },
+                    fontSize: "1.5rem",
                     fontWeight: 600,
                     color: "primary.main",
                   }}
                 >
+                  {" "}
                   Follow Us
                 </Typography>
                 <Box sx={{ display: "flex", gap: 2 }}>
                   <IconButton
                     color="primary"
-                    href="#"
-                    target="_blank"
+                    href="https://x.com/home"
                     aria-label="Facebook"
                   >
-                    <FacebookIcon fontSize="large" />
+                    <FacebookIcon />
                   </IconButton>
                   <IconButton
                     color="primary"
-                    href="#"
-                    target="_blank"
+                    href="https://x.com/home"
                     aria-label="Twitter"
                   >
-                    <TwitterIcon fontSize="large" />
+                    <TwitterIcon />
                   </IconButton>
                   <IconButton
                     color="primary"
-                    href="#"
-                    target="_blank"
+                    href="https://www.instagram.com/"
                     aria-label="Instagram"
                   >
-                    <InstagramIcon fontSize="large" />
+                    <InstagramIcon />
                   </IconButton>
                   <IconButton
                     color="primary"
-                    href="#"
-                    target="_blank"
+                    href="https://www.linkedin.com/feed/"
                     aria-label="LinkedIn"
                   >
-                    <LinkedInIcon fontSize="large" />
+                    <LinkedInIcon />
                   </IconButton>
                 </Box>
               </Box>
             </Card>
           </Grid>
-          <Grid item xs={12}>
-            <Card sx={{ p: { xs: 3, md: 4 }, borderRadius: 3, boxShadow: 3 }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  mb: 2,
-                  fontSize: { xs: "1.5rem", md: "1.75rem" },
-                  fontWeight: 600,
-                  color: "primary.main",
-                }}
-              >
-                Our Location
-              </Typography>
-              <Box
-                sx={{
-                  width: "100%",
-                  height: { xs: 300, md: 400 },
-                  borderRadius: 2,
-                  overflow: "hidden",
-                }}
-              >
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.816480397072!2d36.817223!3d-1.286389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d0d0b%3A0xf751e1d0f5e4e7e!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1678912345678!5m2!1sen!2sus"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Zaph Tours Location"
-                ></iframe>
-              </Box>
-            </Card>
-          </Grid>
         </Grid>
-      </Container>{" "}
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-      >
-        <Alert
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={4000}
           onClose={handleCloseSnackbar}
-          severity={snackbarSeverity}
-          sx={{ width: "100%" }}
         >
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
+          {" "}
+          <Alert
+            severity="success"
+            onClose={handleCloseSnackbar}
+            sx={{ width: "100%" }}
+          >
+            {" "}
+            Message sent successfully! We'll get back to you soon.
+          </Alert>
+        </Snackbar>
+      </Container>
     </Box>
   );
 };
-
 export default ContactUsPage;

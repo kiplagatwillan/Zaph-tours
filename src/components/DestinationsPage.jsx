@@ -5,8 +5,8 @@ import {
   Typography,
   Grid,
   Card,
-  CardContent,
   CardMedia,
+  CardContent,
   CardActions,
   Button,
 } from "@mui/material";
@@ -21,32 +21,25 @@ const DestinationsPage = () => {
           align="center"
           sx={{
             mb: { xs: 6, md: 8 },
+            fontWeight: 700,
             fontSize: { xs: "2rem", md: "3rem" },
             color: "primary.main",
           }}
         >
           All Our Amazing Destinations
         </Typography>
-        <Grid container spacing={4} justifyContent="center">
+
+        <Grid container spacing={4}>
           {allDestinations.map((destination) => (
-            <Grid
-              item
-              key={destination.id}
-              xs={12}
-              sm={6}
-              md={4}
-              lg={3}
-              sx={{ display: "flex" }}
-            >
+            <Grid item key={destination.id} xs={12} sm={6} md={4}>
               <Card
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  width: "100%",
+                  height: "100%",
                   borderRadius: 3,
                   boxShadow: 3,
-                  transition:
-                    "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                  transition: "0.3s",
                   "&:hover": {
                     transform: "translateY(-5px)",
                     boxShadow: 6,
@@ -55,26 +48,19 @@ const DestinationsPage = () => {
               >
                 <CardMedia
                   component="img"
-                  height="200"
                   image={destination.image}
                   alt={destination.name}
                   sx={{
-                    borderTopLeftRadius: 3,
-                    borderTopRightRadius: 3,
+                    height: 200,
                     objectFit: "cover",
-                    height: 192,
+                    borderTopLeftRadius: 12,
+                    borderTopRightRadius: 12,
                   }}
                 />
-                <CardContent sx={{ flexGrow: 1, p: 3 }}>
+                <CardContent sx={{ flexGrow: 1 }}>
                   <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    sx={{
-                      fontWeight: 600,
-                      fontSize: "1.25rem",
-                      color: "primary.main",
-                    }}
+                    variant="h6"
+                    sx={{ fontWeight: 600, color: "primary.main", mb: 1 }}
                   >
                     {destination.name}
                   </Typography>
@@ -85,38 +71,22 @@ const DestinationsPage = () => {
                   >
                     {destination.description}
                   </Typography>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 1,
-                      mb: 2,
-                    }}
-                  >
-                    <Typography
-                      variant="body1"
-                      sx={{ fontWeight: 700, color: "grey.800" }}
-                    >
-                      Group Cost: {destination.priceGroup || destination.price}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{ fontWeight: 700, color: "grey.800" }}
-                    >
-                      Solo Cost:{" "}
-                      {destination.priceIndividual ||
-                        (
-                          parseFloat(destination.price.replace("$", "")) * 1.2
-                        ).toFixed(0) + "$"}
-                    </Typography>
-                  </Box>
+                  <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                    Group: {destination.priceGroup || destination.price}
+                  </Typography>
+                  <Typography variant="body1" sx={{ fontWeight: 600 }}>
+                    Solo:{" "}
+                    {destination.priceIndividual ||
+                      (
+                        parseFloat(destination.price.replace("$", "")) * 1.2
+                      ).toFixed(0) + "$"}
+                  </Typography>
                 </CardContent>
                 <CardActions sx={{ p: 2, pt: 0 }}>
                   <Button
-                    size="small"
-                    color="primary"
-                    variant="outlined"
                     fullWidth
+                    variant="outlined"
+                    color="primary"
                     sx={{ borderRadius: 2, py: 1 }}
                     href="#"
                   >

@@ -101,6 +101,7 @@ export default function App() {
                 aria-label="menu"
                 onClick={toggleDrawer(true)}
               >
+                {" "}
                 <MenuIcon />
               </IconButton>
             ) : (
@@ -176,7 +177,8 @@ export default function App() {
         >
           <Container maxWidth="lg">
             <Typography variant="body1" sx={{ mb: 1 }}>
-              &copy; {new Date().getFullYear()} Zaph Tours. All rights reserved.
+              &copy; {new Date().getFullYear()} Kiplagat willan. All rights
+              reserved.
             </Typography>
             <Typography variant="body2" sx={{ color: "grey.400" }}>
               Best Safaris and Adventures

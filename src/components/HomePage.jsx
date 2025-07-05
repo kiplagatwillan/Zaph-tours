@@ -1,317 +1,165 @@
 import React from "react";
 import {
   Box,
-  Container,
   Typography,
   Button,
+  Container,
   Grid,
   Card,
-  CardContent,
   CardMedia,
-  CardActions,
-  TextField,
+  CardContent,
 } from "@mui/material";
-import {
-  featuredDestinations,
-  testimonials,
-  getPlaceholderImage,
-} from "../data/dummyData.js";
+import { featuredDestinations, testimonials } from "../data/dummyData";
 
 const HomePage = ({ setCurrentPage }) => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "100vh",
-        backgroundColor: "background.default",
-      }}
-    >
+    <Box sx={{ backgroundColor: "background.default" }}>
       <Box
         sx={{
-          position: "relative",
-          width: "100%",
-          height: { xs: "60vh", md: "80vh" },
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          py: { xs: 12, md: 18 },
+          backgroundImage: "url('/images/hero.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          color: "#fff",
           textAlign: "center",
-          color: "white",
-    
+          position: "relative",
         }}
       >
         <Container maxWidth="md">
           <Typography
-            variant="h1"
+            variant="h2"
             sx={{
-              color: "white",
-              marginBottom: 2,
-              fontSize: { xs: "2.5rem", sm: "3.5rem", md: "4.5rem" },
-              fontWeight: 700,
-              textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
+              mb: 3,
+              fontWeight: 800,
+              textShadow: "2px 2px 6px rgba(0,0,0,0.7)",
+              fontSize: { xs: "2.5rem", md: "3.5rem" },
             }}
           >
-            Best Safaris and Adventures
+            Explore With Us
           </Typography>
           <Typography
-            variant="h4"
+            variant="h6"
             sx={{
-              color: "white",
-              marginBottom: 4,
-              fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.8rem" },
-              textShadow: "1px 1px 3px rgba(0,0,0,0.4)",
+              mb: 4,
+              fontWeight: 500,
+              textShadow: "1px 1px 3px rgba(0,0,0,0.5)",
+              fontSize: { xs: "1.1rem", md: "1.3rem" },
+              maxWidth: "80%",
+              margin: "0 auto",
             }}
           >
-            Explore the world with Zaph Tours
+            Breathtaking landscapes, iconic wildlife safaris, and vibrant local
+            cultures await.
           </Typography>
           <Button
             variant="contained"
-            color="secondary"
             size="large"
+            color="secondary"
             onClick={() => setCurrentPage("destinations")}
-            sx={{
-              px: { xs: 4, md: 6 },
-              py: { xs: 1.5, md: 2 },
-              borderRadius: "9999px",
-              fontSize: { xs: "1rem", md: "1.1rem" },
-              fontWeight: "semibold",
-            }}
+            sx={{ fontWeight: 600 }}
           >
-            Discover Destinations
+            Explore Destinations
           </Button>
         </Container>
       </Box>
-      <Container maxWidth="md" sx={{ py: { xs: 8, md: 12 } }}>
-        <Typography
-          variant="h2"
-          align="center"
-          sx={{ mb: { xs: 4, md: 6 }, fontSize: { xs: "2rem", md: "3rem" } }}
-        >
-          About Zaph Tours
-        </Typography>
-        <Typography
-          variant="body1"
-          align="center"
-          sx={{ color: "text.secondary", lineHeight: 1.8 }}
-        >
-          Zaph Tours is a premier travel company based in Kenya, specializing in
-          providing the best safaris and adventure tours. With a strong
-          reputation for delivering exceptional travel experiences, Zaph Tours
-          offers a variety of packages that showcase the natural beauty and
-          cultural richness of Kenya and other destinations. Our mission is to
-          create unforgettable journeys that connect you with nature, culture,
-          and adventure, all while prioritizing your safety and comfort. We are
-          passionate about travel and committed to providing personalized
-          service that exceeds your expectations.
-        </Typography>
-      </Container>
-      <Box
-        sx={{
-          backgroundColor: "grey.100",
-          width: "100%",
-          py: { xs: 8, md: 12 },
-        }}
-      >
+      <Box sx={{ py: { xs: 8, md: 10 }, backgroundColor: "background.paper" }}>
+        <Container maxWidth="md">
+          <Typography
+            variant="h3"
+            align="center"
+            sx={{ mb: 4, color: "primary.main", fontWeight: 700 }}
+          >
+            About Zaph Tours
+          </Typography>
+          <Typography
+            variant="body1"
+            align="center"
+            sx={{ color: "text.secondary", lineHeight: 1.8 }}
+          >
+            Zaph Tours is your trusted gateway to unforgettable African
+            adventures. We specialize in customized safaris, cultural
+            explorations, and eco-conscious travel experiences across Kenya and
+            East Africa. Whether you're seeking luxury, thrill, or connection
+            with nature, we make your travel dreams a breathtaking reality.
+          </Typography>
+        </Container>
+      </Box>
+      <Box sx={{ py: { xs: 8, md: 12 } }}>
         <Container maxWidth="lg">
           <Typography
-            variant="h2"
+            variant="h3"
             align="center"
-            sx={{ mb: { xs: 6, md: 8 }, fontSize: { xs: "2rem", md: "3rem" } }}
+            sx={{ mb: 6, color: "primary.main", fontWeight: 600 }}
           >
-            Our Featured Destinations
+            Featured Destinations
           </Typography>
-          <Grid container spacing={4} justifyContent="center">
-            {featuredDestinations.map((destination) => (
-              <Grid
-                item
-                key={destination.id}
-                xs={12}
-                sm={6}
-                md={4}
-                sx={{ display: "flex" }}
-              >
+          <Grid container spacing={2}>
+            {featuredDestinations.map((dest) => (
+              <Grid item xs={12} sm={6} md={4} key={dest.id}>
                 <Card
                   sx={{
+                    height: "100%",
                     display: "flex",
                     flexDirection: "column",
-                    width: "100%",
                     borderRadius: 3,
                     boxShadow: 3,
-                    transition:
-                      "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
-                    "&:hover": {
-                      transform: "translateY(-5px)",
-                      boxShadow: 6, // shadow-xl
-                    },
                   }}
                 >
-                  {" "}
                   <CardMedia
                     component="img"
-                    height="250"
-                    image={destination.image}
-                    alt={destination.name}
-                    sx={{
-                      borderTopLeftRadius: 3, // rounded-t-xl
-                      borderTopRightRadius: 3, // rounded-t-xl
-                      objectFit: "cover",
-                      height: 192, // h-48
-                    }}
+                    image={dest.image}
+                    alt={dest.name}
+                    sx={{ height: 200 }}
                   />
-                  <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="div"
-                      sx={{
-                        fontWeight: 600,
-                        fontSize: "1.25rem",
-                        color: "primary.main",
-                      }}
-                    >
-                      {destination.name}
+                  <CardContent>
+                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                      {dest.name}
                     </Typography>
                     <Typography
                       variant="body2"
-                      color="text.secondary"
-                      sx={{ mb: 2 }}
+                      sx={{ mt: 1, color: "text.secondary" }}
                     >
-                      {destination.description}
+                      {dest.description}
                     </Typography>
                     <Typography
-                      variant="h6"
-                      color="primary"
-                      sx={{ fontWeight: 700 }}
+                      variant="subtitle1"
+                      sx={{ mt: 2, fontWeight: 700 }}
                     >
-                      Price: {destination.price}
+                      {dest.price}
                     </Typography>
                   </CardContent>
-                  <CardActions sx={{ p: 2, pt: 0 }}>
-                    <Button
-                      size="small"
-                      color="primary"
-                      variant="contained"
-                      fullWidth
-                      sx={{ borderRadius: 2, py: 1 }}
-                      onClick={() => setCurrentPage("destinations")}
-                    >
-                      Learn More
-                    </Button>
-                  </CardActions>
                 </Card>
               </Grid>
             ))}
           </Grid>
         </Container>
       </Box>
-      <Container maxWidth="md" sx={{ py: { xs: 8, md: 12 } }}>
-        <Typography
-          variant="h2"
-          align="center"
-          sx={{ mb: { xs: 6, md: 8 }, fontSize: { xs: "2rem", md: "3rem" } }}
-        >
-          What Our Customers Say
-        </Typography>
-        <Grid container spacing={4} justifyContent="center">
-          {testimonials.map((testimonial, index) => (
-            <Grid item key={index} xs={12} md={4} sx={{ display: "flex" }}>
-              <Card
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "100%",
-                  borderRadius: 3,
-                  boxShadow: 3,
-                  p: 3,
-                  textAlign: "center",
-                  backgroundColor: "secondary.light",
-                }}
-              >
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography
-                    variant="body1"
-                    sx={{ fontStyle: "italic", mb: 2, color: "grey.800" }}
-                  >
-                    "{testimonial.quote}"
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ fontWeight: 600 }}
-                  >
-                    - {testimonial.author}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-      <Box
-        sx={{
-          backgroundColor: "primary.main",
-          width: "100%",
-          py: { xs: 8, md: 12 },
-          color: "white",
-        }}
-      >
-        <Container maxWidth="sm" sx={{ textAlign: "center" }}>
+      <Box sx={{ py: { xs: 8, md: 10 }, backgroundColor: "grey.100" }}>
+        <Container maxWidth="md">
           <Typography
             variant="h3"
-            sx={{
-              mb: 3,
-              color: "white",
-              fontSize: { xs: "1.75rem", md: "2.5rem" },
-              fontWeight: 700,
-            }}
+            align="center"
+            sx={{ mb: 6, color: "primary.main", fontWeight: 600 }}
           >
-            Stay Updated!
+            What Our Travelers Say
           </Typography>
-          <Typography variant="body1" sx={{ mb: 4, color: "white" }}>
-            Sign up for Zaph Tours' newsletter to receive weekly email updates
-            on safaris and adventures, exclusive offers, and travel tips.
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", sm: "row" },
-              gap: { xs: 2, sm: 3 },
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <TextField
-              label="Your Email Address"
-              variant="outlined"
-              fullWidth
-              size="medium"
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  "& fieldset": { borderColor: "white" },
-                  "&:hover fieldset": { borderColor: "white" },
-                  "&.Mui-focused fieldset": { borderColor: "white" },
-                  color: "white",
-                },
-                "& .MuiInputLabel-root": { color: "white" },
-                "& .MuiInputLabel-root.Mui-focused": { color: "white" },
-              }}
-            />
-            <Button
-              variant="contained"
-              color="secondary"
-              size="large"
-              sx={{
-                px: { xs: 4, md: 6 },
-                py: { xs: 1.5, md: 2 },
-                borderRadius: "9999px",
-                fontWeight: "semibold",
-              }}
-            >
-              Subscribe
-            </Button>
-          </Box>
+          <Grid container spacing={4}>
+            {testimonials.map((testimonial, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <Card sx={{ p: 3, borderRadius: 3, height: "100%" }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ fontStyle: "italic", mb: 2 }}
+                  >
+                    “{testimonial.quote}”
+                  </Typography>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
+                    — {testimonial.author}
+                  </Typography>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Container>
       </Box>
     </Box>
