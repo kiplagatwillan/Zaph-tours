@@ -7,13 +7,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mui/material": "^5.x.x",
     "@emotion/react": "^11.x.x",
     "@emotion/styled": "^11.x.x",
+    "@mui/material": "^5.x.x",
     "react": "^18.x.x",
     "react-dom": "^18.x.x"
   },
   "devDependencies": {
-    "vite": "^5.x.x"
+    "@vitejs/plugin-react": "^4.6.0",
+    "vite": "^7.0.2"
   }
 }
